@@ -123,20 +123,22 @@ int main() {
     // Input for rides
     cout << "Enter Ride ID for Standard Ride: ";
     cin >> rideID;
+    cin.ignore();  // To ignore the newline character left by cin
     cout << "Enter Pickup Location: ";
-    cin >> pickupLocation;
+    getline(cin, pickupLocation);  // Use getline to capture multi-word input
     cout << "Enter Dropoff Location: ";
-    cin >> dropoffLocation;
+    getline(cin, dropoffLocation);
     cout << "Enter Distance (miles): ";
     cin >> distance;
     Ride* ride1 = new StandardRide(rideID, pickupLocation, dropoffLocation, distance);
 
     cout << "Enter Ride ID for Premium Ride: ";
     cin >> rideID;
+    cin.ignore();  // To ignore the newline character left by cin
     cout << "Enter Pickup Location: ";
-    cin >> pickupLocation;
+    getline(cin, pickupLocation);
     cout << "Enter Dropoff Location: ";
-    cin >> dropoffLocation;
+    getline(cin, dropoffLocation);
     cout << "Enter Distance (miles): ";
     cin >> distance;
     Ride* ride2 = new PremiumRide(rideID, pickupLocation, dropoffLocation, distance);
@@ -146,19 +148,20 @@ int main() {
     ride2->calculateFare();
 
     // Input for driver
+    cin.ignore();  // To ignore any leftover newline character
     cout << "Enter Driver ID: ";
-    cin >> driverID;
+    getline(cin, driverID);
     cout << "Enter Driver Name: ";
-    cin >> driverName;
+    getline(cin, driverName);
     Driver driver1(driverID, driverName);
     driver1.addRide(ride1);
     driver1.addRide(ride2);
 
     // Input for rider
     cout << "Enter Rider ID: ";
-    cin >> riderID;
+    getline(cin, riderID);
     cout << "Enter Rider Name: ";
-    cin >> riderName;
+    getline(cin, riderName);
     Rider rider1(riderID, riderName);
     rider1.requestRide(ride1);
 
