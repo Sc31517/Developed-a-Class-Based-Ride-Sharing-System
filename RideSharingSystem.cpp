@@ -13,7 +13,7 @@ protected:
     float fare;
 
 public:
-    Ride(string id, string pickup, string dropoff, float dist) 
+    Ride(string id, string pickup, string dropoff, float dist)
         : rideID(id), pickupLocation(pickup), dropoffLocation(dropoff), distance(dist) {}
 
     virtual float calculateFare() {
@@ -114,22 +114,52 @@ public:
     }
 };
 
+// Main function
 int main() {
-    // Create some rides
-    Ride* ride1 = new StandardRide("001", "Location A", "Location B", 10);
-    Ride* ride2 = new PremiumRide("002", "Location C", "Location D", 5);
+    string rideID, pickupLocation, dropoffLocation;
+    float distance;
+    string driverID, driverName, riderID, riderName;
+
+    // Input for rides
+    cout << "Enter Ride ID for Standard Ride: ";
+    cin >> rideID;
+    cout << "Enter Pickup Location: ";
+    cin >> pickupLocation;
+    cout << "Enter Dropoff Location: ";
+    cin >> dropoffLocation;
+    cout << "Enter Distance (miles): ";
+    cin >> distance;
+    Ride* ride1 = new StandardRide(rideID, pickupLocation, dropoffLocation, distance);
+
+    cout << "Enter Ride ID for Premium Ride: ";
+    cin >> rideID;
+    cout << "Enter Pickup Location: ";
+    cin >> pickupLocation;
+    cout << "Enter Dropoff Location: ";
+    cin >> dropoffLocation;
+    cout << "Enter Distance (miles): ";
+    cin >> distance;
+    Ride* ride2 = new PremiumRide(rideID, pickupLocation, dropoffLocation, distance);
 
     // Calculate the fare for both rides
     ride1->calculateFare();
     ride2->calculateFare();
 
-    // Create a driver and assign rides
-    Driver driver1("D001", "John");
+    // Input for driver
+    cout << "Enter Driver ID: ";
+    cin >> driverID;
+    cout << "Enter Driver Name: ";
+    cin >> driverName;
+    Driver driver1(driverID, driverName);
     driver1.addRide(ride1);
     driver1.addRide(ride2);
 
-    // Create a rider and request rides
-    Rider rider1("R001", "Alice");
+    // Input for rider
+    cout << "Enter Rider ID: ";
+    cin >> riderID;
+    cout << "Enter Rider Name: ";
+    cin >> riderName;
+    Rider rider1(riderID, riderName);
     rider1.requestRide(ride1);
 
     // Display information
